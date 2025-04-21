@@ -37,9 +37,10 @@ nltk.download('stopwords')
 
 # Sample documents
 documents = {
-    "doc1": "The cat sat on the mat.",
-    "doc2": "The dog sat on the log.",
-    "doc3": "The cat lay on the rug.",
+    "doc1": "This is the first document.",
+    "doc2": "This document is the second document.",
+    "doc3": "And this is the third one.",
+    "doc4": "Is this the first document?",
 }
 
 # Preprocessing
@@ -99,7 +100,7 @@ def search(query, tfidf_matrix, tfidf_vectorizer):
         doc_text = documents[doc_id]
         dot, norm_q, norm_d, sim = cosine_similarity_manual(query_vector, doc_vector)
         results.append([doc_id, doc_text, round(dot, 4), round(norm_q, 4), round(norm_d, 4), round(sim, 4)])
-
+    
     results.sort(key=lambda x: x[5], reverse=True)
     return results, query_vector
 
